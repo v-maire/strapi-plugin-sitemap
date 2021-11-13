@@ -42,6 +42,7 @@ const ModalForm = (props) => {
       area: '',
       uidFields: [],
       selectedUidField: '',
+      exclude: false
     }));
   }, [])
 
@@ -217,6 +218,26 @@ const ModalForm = (props) => {
                         || !state.contentType && isEmpty(edit)
                       }
                     />
+                  </div>
+                }
+                { settingsType !== 'Collection' && 
+                  <div className="col-12">
+                    
+                    <!--  -->
+                    <Label 
+                      htmlFor="includeHomepage" 
+                      message={globalContext.formatMessage({ id: 'sitemap.Settings.Field.IncludeHomepage.Label' })}
+                    />
+                    <Toggle
+                      name="toggle"
+                      onChange={(e) => onChange(e, 'includeHomepage')}
+                      value={get(props.settings, 'includeHomepage', false)}
+                    />
+                    <p style={{ color: '#9ea7b8', fontSize: 12, marginTop: 5 }}>
+                      {globalContext.formatMessage({ id: 'sitemap.Settings.Field.IncludeHomepage.Description' })}
+                    </p>
+                    
+                    
                   </div>
                 }
               </div>
